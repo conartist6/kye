@@ -6,8 +6,8 @@ import GotoDialog from '../goto-dialog';
 import { connect } from 'react-redux';
 import { entities } from 'potato-engine';
 
-import './game.css';
-import '../entity/entity.css';
+import './game.scss';
+import '../entity/entity.scss';
 
 export class Game extends PureComponent {
   render() {

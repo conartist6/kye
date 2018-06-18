@@ -3,7 +3,7 @@ import Dialog from '../dialog';
 import Button from '../button';
 import { connect } from 'react-redux';
 
-import './style.css';
+import './style.scss';
 
 export class InitialOverlay extends Component {
   submit(event) {
@@ -39,31 +39,31 @@ export class InitialOverlay extends Component {
         </a>
         <div className="controls">
           <div className="keys wasd">
-            <div class="key up">
+            <div className="key up">
               <span>W</span>
             </div>
-            <div class="key left">
+            <div className="key left">
               <span>A</span>
             </div>
-            <div class="key down">
+            <div className="key down">
               <span>S</span>
             </div>
-            <div class="key right">
+            <div className="key right">
               <span>D</span>
             </div>
           </div>
           <span className="or">OR</span>
           <div className="keys arrow">
-            <div class="key up">
+            <div className="key up">
               <span>↑</span>
             </div>
-            <div class="key left">
+            <div className="key left">
               <span>←</span>
             </div>
-            <div class="key down">
+            <div className="key down">
               <span>↓</span>
             </div>
-            <div class="key right">
+            <div className="key right">
               <span>→</span>
             </div>
           </div>

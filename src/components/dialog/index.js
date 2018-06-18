@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './style.css';
+import './style.scss';
 
 export default function Dialog({ show, children, className }) {
   if (!show) {

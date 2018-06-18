@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from './state/store';
-import Game from './components/game';
+import GameWindow from './components/game-window';
 import InitialOverlay from './components/initial-overlay';
 import { Campaign, Level } from 'potato-engine';
 import { parseBoard } from 'kye-parser-ascii';
@@ -29,7 +29,7 @@ const backgroundCampaign = new Campaign([
 function App() {
   return (
     <div className="app">
-      <Game />
+      <GameWindow />
       <InitialOverlay />
     </div>
   );

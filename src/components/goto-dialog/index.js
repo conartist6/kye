@@ -3,7 +3,7 @@ import Dialog from '../dialog';
 import Button from '../button';
 import { connect } from 'react-redux';
 
-import './goto-dialog.css';
+import './goto-dialog.scss';
 
 class GotoDialog extends Component {
   constructor(props) {
