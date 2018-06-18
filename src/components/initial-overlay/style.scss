@@ -1,0 +1,95 @@
+.initial-overlay {
+  height: 245px;
+  width: 455px;
+  top: 72px;
+  left: 76px;
+  z-index: 10;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 14px;
+  }
+
+  .fork-me {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+  }
+
+  .authors {
+    font-size: 14px;
+  }
+
+  .controls {
+    position: absolute;
+    bottom: 20px;
+    margin-bottom: -6px;
+    margin-left: -8px;
+
+    & > .or {
+      display: inline-block;
+      padding: 0 16px;
+      position: relative;
+      bottom: 23px;
+      font-weight: bold;
+    }
+  }
+
+  .keys {
+    position: relative;
+    padding-top: 33px;
+    display: inline-block;
+    margin-left: -3px;
+
+    &.arrow {
+      .key {
+        & > span {
+          text-align: center;
+          padding: 3px;
+        }
+        &.up {
+          left: 33px;
+        }
+        &.down > span {
+          line-height: 14px;
+        }
+      }
+    }
+  }
+
+  .key {
+    box-sizing: border-box;
+    padding: 1px 2px;
+    border: 2px solid #666;
+    width: 30px;
+    height: 31px;
+    background-color: #cacaca;
+    border-radius: 6px;
+    float: left;
+    margin-left: 3px;
+
+    &.up {
+      position: absolute;
+      top: 0;
+      left: 26px;
+    }
+
+    & > span {
+      box-sizing: border-box;
+      padding: 0 1px 0 2px;
+      display: block;
+      background-color: white;
+      border-radius: 4px;
+      height: 22px;
+      background-color: #d1d1d1;
+      background: linear-gradient(to right, #fafafa 0%, #ffffff 50%, #f3f3f3 100%);
+    }
+  }
+
+  .buttons {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+  }
+}

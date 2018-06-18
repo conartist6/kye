@@ -1,0 +1,31 @@
+.game {
+  position: relative;
+  display: inline-block;
+  align-items: flex-start;
+
+  .status-bar {
+    display: flex;
+    line-height: 22px;
+    padding: 2px;
+
+    .status {
+      display: flex;
+      flex-basis: 4;
+      flex-grow: 3;
+
+      & > * {
+        margin-right: 10px;
+      }
+      .kyes {
+        display: flex;
+        padding: 0;
+        & > * {
+          margin-right: 2px;
+        }
+      }
+    }
+    .hint {
+      flex-grow: 2;
+    }
+  }
+}

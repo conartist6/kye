@@ -1,0 +1,25 @@
+button {
+	background-color: #fffffe;
+	border: 1px solid;
+	font-size: 16px;
+	padding: 4px 14px;
+	outline: none;
+	height: 28px;
+	line-height: 18px;
+	margin-left: 8px;
+	margin-top: 1px;
+
+	&[type='submit'] {
+		margin-top: 0;
+		border-width: 2px;
+		height: 30px;
+
+		&:focus {
+			box-shadow: -2px 2px #59ea0e;
+		}
+	}
+
+	&:focus {
+		box-shadow: -2px 2px #75a4fb;
+	}
+}

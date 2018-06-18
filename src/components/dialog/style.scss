@@ -1,0 +1,20 @@
+.dialog {
+  background: white;
+  position: absolute;
+  border: 2px solid black;
+  box-shadow: -5px 6px black;
+  box-sizing: border-box;
+  padding: 20px 30px;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: -4px 1px 20px #00000080;
+    z-index: -1;
+  }
+}

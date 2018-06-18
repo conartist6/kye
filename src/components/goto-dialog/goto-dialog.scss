@@ -1,0 +1,28 @@
+.goto-dialog {
+  width: 350px;
+  height: 150px;
+  top: calc(50% - 15px);
+  left: calc(50% + 1px);
+  margin-left: -175px;
+  margin-top: -75px;
+  z-index: 20;
+
+  input.code {
+    border-style: none none solid none;
+    outline: none;
+    margin: 0 6px;
+    font-size: 16px;
+    width: 140px;
+    text-transform: uppercase;
+  }
+
+  & > h3 {
+    margin-top: 0;
+  }
+
+  .buttons {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
