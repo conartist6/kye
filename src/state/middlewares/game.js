@@ -32,6 +32,7 @@ export default store => {
         getState,
         record: true,
         plugins: [MagnetismPlugin],
+        displayOnly: state.welcoming,
       });
       input.setMode('game');
 

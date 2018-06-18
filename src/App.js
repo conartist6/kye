@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from './state/store';
-import GameWindow from './components/game-window';
+import Game from './components/game';
+import Window from './components/window';
 import InitialOverlay from './components/initial-overlay';
 import { Campaign, Level } from 'potato-engine';
 import { parseBoard } from 'kye-parser-ascii';
 import borderKye from './border.kye';
 
 import './entities';
-
-function* iterateArray2d(array2d) {
-  for (const row of array2d) {
-    for (const cell of row) {
-      yield cell;
-    }
-  }
-}
 
 const backgroundCampaign = new Campaign([
   new Level(
@@ -29,8 +22,10 @@ const backgroundCampaign = new Campaign([
 function App() {
   return (
     <div className="app">
-      <GameWindow />
-      <InitialOverlay />
+      <Window>
+        <InitialOverlay />
+        <Game />
+      </Window>
     </div>
   );
 }

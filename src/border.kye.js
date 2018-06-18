@@ -11,7 +11,7 @@ export default {
   // prettier-ignore
   ascii:
 `555555555555555555555555555555
-5Fv*                      * K5
+5Fv*                      *  5
 5vv8 RL  RL   RL   RL  RL 8a 5
 5vv555555555555555555555555 a5
 5vv5                      5  5

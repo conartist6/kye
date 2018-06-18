@@ -4,6 +4,7 @@ import { entities } from 'potato-engine';
 const kyes = 3;
 
 const State = Record({
+  filename: 'border.kye',
   welcoming: true,
   board: null,
   kyes, // lives

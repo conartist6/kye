@@ -1,0 +1,33 @@
+.window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  box-shadow: -4px 4px 0px black;
+  top: calc(50% - 224px);
+  left: calc(50% - 300px);
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: -4px 1px 20px rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+
+  .title-bar {
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid black;
+    padding: 2px;
+    cursor: pointer;
+  }
+
+  .window-content {
+    position: relative;
+  }
+}

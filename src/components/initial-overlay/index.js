@@ -26,17 +26,10 @@ export class InitialOverlay extends Component {
       <Dialog show={welcoming} className="initial-overlay">
         <h2>Kye</h2>
         <p className="authors">
-          A game by Colin Garbutt
+          An es6 game by Conrad Buck
           <br />
-          Implemented by Conrad Buck
+          Ported from a win16 game by Colin Garbutt
         </p>
-        <a href="https://github.com/conartist6/potato-engine">
-          <img
-            className="fork-me"
-            src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
-            alt="Fork me on GitHub"
-          />
-        </a>
         <div className="controls">
           <div className="keys wasd">
             <div className="key up">
