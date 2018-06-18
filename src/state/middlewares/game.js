@@ -1,6 +1,7 @@
 import { getLevel, getInputMode } from '../game';
 import { Board } from 'potato-engine';
 import { Input } from 'potato-engine-components';
+import MagnetismPlugin from 'potato-engine-plugin-magnetism';
 
 export default store => {
   function getState() {
@@ -27,7 +28,11 @@ export default store => {
     let level = getLevel(state, action);
 
     if (level) {
-      const board = new Board(level, level.dimensions, { getState, record: true });
+      const board = new Board(level, level.dimensions, {
+        getState,
+        record: true,
+        plugins: [MagnetismPlugin],
+      });
       input.setMode('game');
 
       const onMove = direction => {
