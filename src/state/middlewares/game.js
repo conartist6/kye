@@ -1,4 +1,5 @@
 import { getLevel, getInputMode } from '../game';
+import { parseCampaign } from 'kye-parser-ascii';
 import { Board } from 'potato-engine';
 import { Input } from 'potato-engine-components';
 import MagnetismPlugin from 'potato-engine-plugin-magnetism';
@@ -25,6 +26,21 @@ export default store => {
       board.tick(action.direction);
     }
 
+    if (action.type === 'OPEN_FILE' && action.name !== state.filename) {
+      const filename = action.name;
+      if (/\.kye$/.test(filename)) {
+        fetch(/campaigns/ + filename)
+          .then(response => response.text())
+          .then(file => parseCampaign(file))
+          .then(campaign => {
+            store.dispatch({
+              type: 'LOAD_CAMPAIGN',
+              campaign,
+            });
+          });
+      }
+    }
+
     let level = getLevel(state, action);
 
     if (level) {
@@ -32,7 +48,7 @@ export default store => {
         getState,
         record: true,
         plugins: [MagnetismPlugin],
-        displayOnly: state.welcoming,
+        displayOnly: action.displayOnly,
       });
       input.setMode('game');
 
@@ -47,7 +63,7 @@ export default store => {
       const onReset = () => {
         store.dispatch({ type: 'LOAD_LEVEL' });
       };
-      if (!state.welcoming) {
+      if (!action.displayOnly) {
         input.on('move', onMove);
         input.on('pause-unpause', onPauseUnpause);
         input.on('reset', onReset);

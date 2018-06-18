@@ -6,8 +6,11 @@
   .status-bar {
     display: flex;
     line-height: 22px;
-    height: 18px;
     padding: 2px;
+
+    .welcoming {
+      margin-left: 4px;
+    }
 
     .status {
       display: flex;

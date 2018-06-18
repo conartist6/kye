@@ -19,10 +19,17 @@ const State = Record({
 
 export default function game(state = new State(), action) {
   switch (action.type) {
+    case 'OPEN_FILE':
+      state = state.set('filename', action.name);
+      break;
     case 'LOAD_CAMPAIGN':
-      state = State().withMutations(state => {
-        state.campaign = action.campaign;
-        changeLevel(state, action);
+      state = State().withMutations(newState => {
+        if (!action.displayOnly) {
+          newState.welcoming = false;
+        }
+        newState.filename = state.filename;
+        newState.campaign = action.campaign;
+        changeLevel(newState, action);
       });
       break;
     case 'PAUSE_UNPAUSE':

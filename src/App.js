@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from './state/store';
 import Game from './components/game';
-import Window from './components/window';
+import Window from './components/os/window';
+import OperatingSystem from './components/os';
 import InitialOverlay from './components/initial-overlay';
 import { Campaign, Level } from 'potato-engine';
 import { parseBoard } from 'kye-parser-ascii';
@@ -22,10 +23,12 @@ const backgroundCampaign = new Campaign([
 function App() {
   return (
     <div className="app">
-      <Window>
-        <InitialOverlay />
-        <Game />
-      </Window>
+      <OperatingSystem>
+        <Window>
+          <InitialOverlay />
+          <Game />
+        </Window>
+      </OperatingSystem>
     </div>
   );
 }
@@ -39,6 +42,7 @@ export default class AppRoot extends Component {
     this.store.dispatch({
       type: 'LOAD_CAMPAIGN',
       campaign: backgroundCampaign,
+      displayOnly: true,
     });
   }
   render() {

@@ -2,9 +2,11 @@ import { createStore as createStoreRedux, applyMiddleware, compose, combineReduc
 import gameMiddleware from './middlewares/game';
 import thunk from 'redux-thunk';
 import game from './game';
+import os from './os';
 
 const rootReducer = combineReducers({
   game,
+  os,
 });
 
 export function createStore() {
@@ -19,7 +21,10 @@ export function createStore() {
     }
   }
 
-  const composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers);
+  const composedEnhancers = compose(
+    applyMiddleware(...middleware),
+    ...enhancers,
+  );
 
   return createStoreRedux(rootReducer, {}, composedEnhancers);
 }

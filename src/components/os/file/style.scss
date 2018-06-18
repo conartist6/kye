@@ -1,0 +1,24 @@
+.file {
+  display: inline-block;
+
+  & > .filename {
+    padding: 1px 4px;
+  }
+
+  &.selected {
+    & > .filename {
+      color: white;
+      background-color: #3232a2;
+    }
+  }
+
+  & > .icon {
+    width: 60px;
+    height: 70px;
+    margin: 0 auto;
+    background-image: url(./kye-file-128.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}

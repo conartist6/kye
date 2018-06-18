@@ -5,6 +5,11 @@
   left: 76px;
   z-index: 10;
 
+  .player {
+    display: inline-block;
+    bottom: -2px;
+  }
+
   h2 {
     margin-top: 0;
     margin-bottom: 14px;

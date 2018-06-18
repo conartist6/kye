@@ -6,6 +6,9 @@
   box-shadow: -4px 4px 0px black;
   top: calc(50% - 224px);
   left: calc(50% - 300px);
+  background-color: white;
+  margin: 8px;
+  margin-left: 50px;
 
   &:after {
     content: '';

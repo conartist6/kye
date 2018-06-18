@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Dialog from '../dialog';
 import Button from '../button';
+import { Entity } from 'potato-engine-components';
+import { entities } from 'potato-engine';
 import { connect } from 'react-redux';
 
 import './style.scss';
@@ -24,12 +26,16 @@ export class InitialOverlay extends Component {
 
     return (
       <Dialog show={welcoming} className="initial-overlay">
-        <h2>Kye</h2>
+        <h2>
+          Kye <div className="entity player" />
+        </h2>
         <p className="authors">
           An es6 game by Conrad Buck
           <br />
-          Ported from a win16 game by Colin Garbutt
+          Ported from a <a href="https://classicreload.com/win3x-kye.html">win16 game</a> by Colin
+          Garbutt
         </p>
+        <p>Open a level file to begin!</p>
         <div className="controls">
           <div className="keys wasd">
             <div className="key up">
