@@ -60,7 +60,6 @@ export default function game(state = new State(), action) {
         state = state.set(
           'windows',
           state.windows.withMutations(windows => {
-            debugger;
             const idx = windows.findIndex(wndw => wndw.appName === action.target);
             const wndw = windows.get(idx);
 

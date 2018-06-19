@@ -14,12 +14,10 @@ import { List, Map } from 'immutable';
 import './entities';
 
 const backgroundCampaign = new Campaign([
-  new Level(
-    borderKye.header,
-    borderKye.dimensions,
-    parseBoard(borderKye.ascii.split('\n')),
-    borderKye.index,
-  ),
+  new Level({
+    ...borderKye,
+    board: parseBoard(borderKye.ascii.split('\n')),
+  }),
 ]);
 
 export default class AppRoot extends Component {
