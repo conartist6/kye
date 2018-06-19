@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './style.scss';
 
 export function Desktop({ dispatch, desktopFiles }) {
-  const icons = desktopFiles.map(file => <File file={file} />);
+  const icons = desktopFiles.map(file => <File file={file} key={`${file.type}/${file.name}`} />);
   return <div className="desktop">{icons}</div>;
 }
 
