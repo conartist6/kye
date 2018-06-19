@@ -11,10 +11,11 @@ export class Window extends Component {
     const App = app.component;
     return (
       <Draggable handle=".title-bar" bounds="parent">
-        <div className="window">
+        <div className="window" data-app-name={wndw.appName}>
           <div className="title-bar">
             <div
               className="close"
+              onMouseDown={evt => evt.stopPropagation()}
               onClick={() => {
                 dispatch({
                   type: 'CLOSE_WINDOW',

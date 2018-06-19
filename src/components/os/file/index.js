@@ -14,6 +14,7 @@ export class File extends Component {
     const { file, selected, dispatch } = this.props;
 
     evt.preventDefault();
+    evt.stopPropagation();
 
     const now = Date.now();
     const isDblClick = selected && this._lastClick && now - this._lastClick < 500;

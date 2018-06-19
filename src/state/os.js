@@ -53,8 +53,22 @@ export default function game(state = new State(), action) {
     case 'CLOSE_WINDOW':
       state = state.set('windows', state.windows.filter(w => w !== action.window));
       break;
-    case 'CLICK_DESKTOP':
-      state = state.set('selectedFile', null);
+    case 'FOCUS':
+      if (action.target === 'desktop') {
+        state = state.set('selectedFile', null);
+      } else {
+        state = state.set(
+          'windows',
+          state.windows.withMutations(windows => {
+            debugger;
+            const idx = windows.findIndex(wndw => wndw.appName === action.target);
+            const wndw = windows.get(idx);
+
+            windows.remove(idx);
+            windows.push(wndw);
+          }),
+        );
+      }
       break;
   }
   return state;
