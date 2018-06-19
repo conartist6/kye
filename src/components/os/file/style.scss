@@ -1,12 +1,21 @@
 .file {
   display: inline-block;
+  margin-bottom: 42px;
+  width: 80px;
+  position: relative;
 
-  & > .filename {
-    padding: 1px 4px;
+  & > .name {
+    & > div {
+      padding: 1px 4px;
+      margin-left: -50%;
+      display: inline-block;
+    }
+    position: absolute;
+    margin-left: 40px;
   }
 
   &.selected {
-    & > .filename {
+    & > .name > div {
       color: white;
       background-color: #3232a2;
     }
@@ -16,9 +25,13 @@
     width: 60px;
     height: 70px;
     margin: 0 auto;
-    background-image: url(./kye-file-128.png);
+    background-image: url(./images/blank-file-128.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+  }
+
+  &.ext-kye > .icon {
+    background-image: url(./images/kye-file-128.png);
   }
 }

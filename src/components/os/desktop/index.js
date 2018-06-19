@@ -5,7 +5,8 @@ import selectParent from 'select-parent';
 
 import './style.scss';
 
-export function Desktop({ dispatch }) {
+export function Desktop({ dispatch, desktopFiles }) {
+  const icons = desktopFiles.map(file => <File file={file} />);
   return (
     <div
       className="desktop"
@@ -18,9 +19,14 @@ export function Desktop({ dispatch }) {
         }
       }}
     >
-      <File name="default.kye" />
+      {icons}
     </div>
   );
 }
 
-export default connect()(Desktop);
+function mapStateToProps({ os: state }) {
+  const { desktopFiles } = state;
+  return { desktopFiles };
+}
+
+export default connect(mapStateToProps)(Desktop);

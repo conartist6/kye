@@ -20,7 +20,9 @@ const State = Record({
 export default function game(state = new State(), action) {
   switch (action.type) {
     case 'OPEN_FILE':
-      state = state.set('filename', action.name);
+      if (/\.kye$/i.test(action.name)) {
+        state = state.set('filename', action.name);
+      }
       break;
     case 'LOAD_CAMPAIGN':
       state = State().withMutations(newState => {

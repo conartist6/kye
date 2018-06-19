@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Dialog from '../dialog';
-import Button from '../button';
+import Dialog from '../../../dialog';
+import Button from '../../../button';
 import { connect } from 'react-redux';
 
 import './goto-dialog.scss';

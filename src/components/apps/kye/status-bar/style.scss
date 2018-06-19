@@ -1,0 +1,31 @@
+.status-bar {
+  display: flex;
+  line-height: 22px;
+  padding: 2px;
+
+  .welcoming {
+    margin-left: 4px;
+  }
+
+  .status {
+    flex-grow: 3;
+
+    &:not(.welcoming) {
+      display: flex;
+      & > * {
+        margin-right: 10px;
+      }
+    }
+
+    .kyes {
+      display: flex;
+      padding: 0;
+      & > * {
+        margin-right: 2px;
+      }
+    }
+  }
+  .hint {
+    flex-grow: 2;
+  }
+}

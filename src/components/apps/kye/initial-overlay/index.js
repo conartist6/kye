@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Dialog from '../dialog';
-import Button from '../button';
+import Dialog from '../../../dialog';
+import Button from '../../../button';
 import { Entity } from 'potato-engine-components';
 import { entities } from 'potato-engine';
 import { connect } from 'react-redux';

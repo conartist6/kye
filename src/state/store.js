@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   os,
 });
 
-export function createStore() {
+export function createStore(initialState = {}) {
   const enhancers = [];
   const middleware = [thunk, gameMiddleware];
 
@@ -26,5 +26,5 @@ export function createStore() {
     ...enhancers,
   );
 
-  return createStoreRedux(rootReducer, {}, composedEnhancers);
+  return createStoreRedux(rootReducer, initialState, composedEnhancers);
 }

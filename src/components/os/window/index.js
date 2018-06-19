@@ -6,12 +6,14 @@ import './style.scss';
 
 export class Window extends Component {
   render() {
-    const { filename, children } = this.props;
+    const { file, app, appComponent: App } = this.props;
     return (
       <Draggable handle=".title-bar" bounds="parent">
         <div className="window">
-          <div className="title-bar">{filename}</div>
-          <div className="window-content">{children}</div>
+          <div className="title-bar">{(file && file.name) || app.name}</div>
+          <div className="window-content">
+            <App />
+          </div>
         </div>
       </Draggable>
     );
@@ -19,8 +21,7 @@ export class Window extends Component {
 }
 
 function mapStateToProps(state) {
-  const { filename } = state.game;
-  return { filename };
+  return {};
 }
 
 export default connect(mapStateToProps)(Window);

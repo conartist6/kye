@@ -3,6 +3,7 @@ import { parseCampaign } from 'kye-parser-ascii';
 import { Board } from 'potato-engine';
 import { Input } from 'potato-engine-components';
 import MagnetismPlugin from 'potato-engine-plugin-magnetism';
+import path from 'path';
 
 export default store => {
   function getState() {
@@ -26,9 +27,10 @@ export default store => {
       board.tick(action.direction);
     }
 
-    if (action.type === 'OPEN_FILE' && action.name !== state.filename) {
-      const filename = action.name;
-      if (/\.kye$/.test(filename)) {
+    if (action.type === 'OPEN_FILE' && action.file.type === 'file') {
+      const filename = action.file.name;
+
+      if (path.extname(filename) === '.kye' && filename !== state.filename) {
         fetch(/campaigns/ + filename)
           .then(response => response.text())
           .then(file => parseCampaign(file))

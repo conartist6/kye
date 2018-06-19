@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import cx from 'classnames';
+import path from 'path';
 
 import './style.scss';
 
@@ -10,7 +11,7 @@ export class File extends Component {
       return;
     }
 
-    const { dispatch, name, selected } = this.props;
+    const { file, selected, dispatch } = this.props;
 
     evt.preventDefault();
 
@@ -20,22 +21,30 @@ export class File extends Component {
     this._lastClick = now;
     dispatch({
       type: isDblClick ? 'OPEN_FILE' : 'SELECT_FILE',
-      name,
+      file,
     });
   }
   render() {
-    const { name, selected, dispatch } = this.props;
+    const { file, selected, dispatch } = this.props;
+    let ext = path.extname(file.name);
+    ext = ext && ext.slice(1);
+
     return (
-      <div className={cx({ file: true, selected })} onMouseDown={evt => this.onMouseDown(evt)}>
+      <div
+        className={cx({ file: true, selected, [`ext-${ext}`]: !!ext })}
+        onMouseDown={evt => this.onMouseDown(evt)}
+      >
         <div className="icon" />
-        <div className="filename">{name}</div>
+        <div className="name">
+          <div>{file.name}</div>
+        </div>
       </div>
     );
   }
 }
 
 function mapStateToProps({ os: state }, props) {
-  const selected = state.selectedFilename === props.name;
+  const selected = state.selectedFile === props.file;
   return { selected };
 }
 
