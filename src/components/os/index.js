@@ -9,8 +9,7 @@ export class OS extends Component {
   render() {
     const { windows, apps, children } = this.props;
     const windowEls = windows.map(wndw => {
-      const app = apps.get(wndw.appName);
-      return <Window file={wndw.file} app={app} appComponent={app.component} />;
+      return <Window window={wndw} app={apps.get(wndw.appName)} />;
     });
     return (
       <div className="operating-system">

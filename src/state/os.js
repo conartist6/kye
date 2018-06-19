@@ -50,6 +50,9 @@ export default function game(state = new State(), action) {
         });
       });
       break;
+    case 'CLOSE_WINDOW':
+      state = state.set('windows', state.windows.filter(w => w !== action.window));
+      break;
     case 'CLICK_DESKTOP':
       state = state.set('selectedFile', null);
       break;
