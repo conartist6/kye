@@ -23,10 +23,10 @@ export default class Shooter extends Thinker {
     return this.entities.Slider;
   }
 
-  makeProjectile() {
+  makeProjectile(dimensions) {
     const Projectile = this.projectileClass;
     return new Projectile(
-      directions.getCoordsInDirection(this.coords, this.direction),
+      directions.getCoordsInDirection(dimensions, this.coords, this.direction),
       this.direction,
     );
   }
@@ -40,7 +40,7 @@ export default class Shooter extends Thinker {
     const target = board.at(this.coords, this.direction);
 
     if (this._timer > y && target == null) {
-      board.create(this.makeProjectile());
+      board.create(this.makeProjectile(board.dimensions));
       this._timer = 0;
     }
   }

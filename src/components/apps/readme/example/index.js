@@ -34,12 +34,18 @@ export default function Example(props) {
   } else {
     const parsedBoard = parseBoard(props.level);
     const level = new Level({
-      dimensions: { height: parsedBoard.length, width: parsedBoard[0].length },
+      dimensions: {
+        height: parsedBoard.length,
+        width: parsedBoard[0].length,
+        wrap: true,
+      },
       board: parsedBoard,
-      wrapEdges: true,
     });
 
-    const replayer = new Replayer(level, slowerReplay([20, 'r', 'r', 'r', 'r', 'r', 'r'])).start();
+    const replayer = new Replayer(
+      level,
+      slowerReplay([20, 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'l']),
+    ).start();
     const game = new Game(replayer);
 
     content = <GameComponent game={game} />;
