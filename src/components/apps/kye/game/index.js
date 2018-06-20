@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Board } from 'potato-engine-components';
+import { Game } from 'potato-engine-components';
 import GotoDialog from '../goto-dialog';
 import StatusBar from '../status-bar';
 
@@ -9,15 +9,14 @@ import { entities } from 'potato-engine';
 import './game.scss';
 import '../entity/entity.scss';
 
-export class Game extends PureComponent {
+export class KyeGame extends PureComponent {
   render() {
-    const { props } = this;
-    const { board, victory } = props;
+    const { game, victory } = this.props;
 
     const content = victory ? (
       <div className="victory">Victory!</div>
     ) : (
-      [board && <Board board={board} key="board" />, <StatusBar key="status-bar" />]
+      [game && <Game game={game} key="game" />, <StatusBar key="status-bar" />]
     );
 
     return (
@@ -30,8 +29,8 @@ export class Game extends PureComponent {
 }
 
 function mapStateToProps(state) {
-  const { board, victory } = state.game;
-  return { board, victory };
+  const { game, victory } = state.game;
+  return { game, victory };
 }
 
-export default connect(mapStateToProps)(Game);
+export default connect(mapStateToProps)(KyeGame);

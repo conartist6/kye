@@ -1,0 +1,15 @@
+.example {
+  text-align: center;
+
+  & > .cell,
+  & > .board {
+    position: relative;
+    display: inline-block;
+  }
+
+  & > .cell {
+    margin-left: 8px;
+    height: 20px;
+    width: 20px;
+  }
+}

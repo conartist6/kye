@@ -6,7 +6,7 @@ const kyes = 3;
 const State = Record({
   filename: 'border.kye',
   welcoming: true,
-  board: null,
+  game: null,
   kyes, // lives
   campaign: null,
   level: null,
@@ -75,7 +75,7 @@ export default function game(state = new State(), action) {
 
 function changeLevel(state, action) {
   state.level = getLevel(state, action);
-  state.board = action.board;
+  state.game = action.game;
   state.kyes = kyes;
   state.diamondsLeft = state.level && state.level.count(entities.Diamond);
 }

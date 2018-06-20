@@ -1,6 +1,6 @@
 import { getLevel, getInputMode } from '../game';
 import { parseCampaign } from 'kye-parser-ascii';
-import { Board } from 'potato-engine';
+import { Board, Game } from 'potato-engine';
 import { Input } from 'potato-engine-components';
 import MagnetismPlugin from 'potato-engine-plugin-magnetism';
 import path from 'path';
@@ -23,8 +23,8 @@ export default store => {
     const state = getState();
 
     if (action.type === 'INPUT') {
-      const { board } = state;
-      board.tick(action.direction);
+      const { game } = state;
+      game.tick(action.direction);
     }
 
     if (action.type === 'OPEN_FILE' && action.file.type === 'file') {
@@ -46,20 +46,23 @@ export default store => {
     let level = getLevel(state, action);
 
     if (level) {
-      const board = new Board(level, level.dimensions, {
-        getState,
-        record: true,
-        plugins: [MagnetismPlugin],
-        displayOnly: action.displayOnly,
-      });
+      const game = new Game(
+        new Board(level, {
+          getState,
+          record: true,
+          plugins: [MagnetismPlugin],
+          displayOnly: action.displayOnly,
+        }),
+      );
+
       input.setMode('game');
 
       const onMove = direction => {
-        board.tick(direction);
+        game.tick(direction);
       };
       const onPauseUnpause = () => {
-        const { board, paused } = getState();
-        board.setPaused(!paused);
+        const { game, paused } = getState();
+        game.setPaused(!paused);
         store.dispatch({ type: 'PAUSE_UNPAUSE' });
       };
       const onReset = () => {
@@ -71,22 +74,22 @@ export default store => {
         input.on('reset', onReset);
       }
 
-      board.on('end', () => {
+      game.on('end', () => {
         input.off('move', onMove);
         input.off('pause-unpause', onPauseUnpause);
         input.off('reset', onReset);
       });
-      board.on('progress', entity => {
+      game.on('progress', entity => {
         store.dispatch({ type: 'PROGRESS', entity });
       });
-      board.on('death', () => {
+      game.on('death', () => {
         store.dispatch({ type: 'DEATH' });
         const state = getState();
         if (state.kyes > 0) {
-          state.board.respawnPlayer();
+          state.game.board.respawnPlayer();
         }
       });
-      board.on('win', recording => {
+      game.on('win', recording => {
         requestIdleCallback(() => {
           let state = getState();
           alert(state.level.header.completionMessage);
@@ -96,7 +99,7 @@ export default store => {
           }
         });
       });
-      action.board = board;
+      action.game = game;
       action.input = input;
     }
 
