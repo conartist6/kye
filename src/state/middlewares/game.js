@@ -57,28 +57,29 @@ export default store => {
 
       input.setMode('game');
 
-      const onMove = direction => {
-        game.tick(direction);
-      };
-      const onPauseUnpause = () => {
-        const { game, paused } = getState();
-        game.setPaused(!paused);
-        store.dispatch({ type: 'PAUSE_UNPAUSE' });
-      };
-      const onReset = () => {
-        store.dispatch({ type: 'LOAD_LEVEL' });
-      };
       if (!action.displayOnly) {
+        const onMove = direction => {
+          game.tick(direction);
+        };
+        const onPauseUnpause = () => {
+          const { game, paused } = getState();
+          game.setPaused(!paused);
+          store.dispatch({ type: 'PAUSE_UNPAUSE' });
+        };
+        const onReset = () => {
+          store.dispatch({ type: 'LOAD_LEVEL' });
+        };
         input.on('move', onMove);
         input.on('pause-unpause', onPauseUnpause);
         input.on('reset', onReset);
+
+        game.on('end', () => {
+          input.off('move', onMove);
+          input.off('pause-unpause', onPauseUnpause);
+          input.off('reset', onReset);
+        });
       }
 
-      game.on('end', () => {
-        input.off('move', onMove);
-        input.off('pause-unpause', onPauseUnpause);
-        input.off('reset', onReset);
-      });
       game.on('progress', entity => {
         store.dispatch({ type: 'PROGRESS', entity });
       });
@@ -90,14 +91,14 @@ export default store => {
         }
       });
       game.on('win', recording => {
-        requestIdleCallback(() => {
+        window.setTimeout(() => {
           let state = getState();
           alert(state.level.header.completionMessage);
           store.dispatch({ type: 'WIN', recording });
           state = getState();
           if (state.victory) {
           }
-        });
+        }, 0);
       });
       action.game = game;
       action.input = input;

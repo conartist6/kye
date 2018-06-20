@@ -5,17 +5,6 @@ import { Entity, Game as GameComponent } from 'potato-engine-components';
 
 import './style.scss';
 
-function slowerReplay(replay) {
-  const slowReplay = [];
-  for (const item of replay) {
-    if (typeof item === 'string') {
-      slowReplay.push(2);
-    }
-    slowReplay.push(item);
-  }
-  return slowReplay;
-}
-
 export default function Example(props) {
   let content;
   let entities = props.entities;
@@ -42,14 +31,13 @@ export default function Example(props) {
       board: parsedBoard,
     });
 
-    const replayer = new Replayer(
-      level,
-      slowerReplay([20, 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'l']),
-    ).start();
-    const game = new Game(replayer);
+    const game = new Game(new Replayer(level, props.replay || [], props.loop));
 
     content = <GameComponent game={game} />;
   }
 
   return <div className="example">{content}</div>;
 }
+Example.defaultProps = {
+  loop: true,
+};
