@@ -3,6 +3,7 @@ import { parseCampaign } from 'kye-parser-ascii';
 import { Board, Game } from 'potato-engine';
 import { Input } from 'potato-engine-components';
 import MagnetismPlugin from 'potato-engine-plugin-magnetism';
+import DeflectionPlugin from 'potato-engine-plugin-deflection';
 import path from 'path';
 
 export default store => {
@@ -50,7 +51,7 @@ export default store => {
         new Board(level, {
           getState,
           record: true,
-          plugins: [MagnetismPlugin],
+          plugins: [MagnetismPlugin, DeflectionPlugin],
           displayOnly: action.displayOnly,
         }),
       );
