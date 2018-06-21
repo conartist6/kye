@@ -8,7 +8,7 @@ export default class Turner extends Interactor {
     const { coords } = this;
     const sourceEntity = board.at(coords, direction);
     if (sourceEntity.attribute === sourceEntity.direction) {
-      const transform = this.turn === 'ANTICLOCKWISE' ? rightOf : leftOf;
+      const transform = this.turn === 'ANTICLOCKWISE' ? leftOf : rightOf;
       sourceEntity.replace(transform(sourceEntity.direction));
     }
   }
@@ -21,5 +21,5 @@ export default class Turner extends Interactor {
     return this.turn === 'ANTICLOCKWISE' ? 'a' : 'c';
   }
 }
-Turner.attributesBySymbol = Map({ a: 'ANTICLOCKWISE', c: 'CLOCKWISE' });
+Turner.attributesBySymbol = Map({ c: 'ANTICLOCKWISE', a: 'CLOCKWISE' });
 Turner.__name = 'Turner'; // uglify killin' me
