@@ -8,10 +8,8 @@ export default class OneWay extends Field {
     return this.attribute;
   }
 
-  enter(board, targetEntity, direction) {
-    return targetEntity instanceof board.entities.Player
-      ? flip(direction) !== this.direction
-      : true;
+  canEnter(board, targetEntity, direction) {
+    return flip(direction) === this.direction ? super.canEnter(...arguments) : false;
   }
 }
 OneWay.attributesBySymbol = Map({ g: 'LEFT', i: 'UP', f: 'RIGHT', h: 'DOWN' });
