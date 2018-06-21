@@ -59,7 +59,9 @@ export default function game(state = new State(), action) {
       });
       break;
     case 'GOTO':
-      state = state.set('showGotoDialog', true);
+      if (!state.welcoming) {
+        state = state.set('showGotoDialog', true);
+      }
       break;
     case 'CANCEL_GOTO':
       state = state.set('showGotoDialog', false);
