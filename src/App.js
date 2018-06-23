@@ -3,13 +3,12 @@ import { Provider } from 'react-redux';
 import { createStore } from './state/store';
 import KyeApp from './components/apps/kye';
 import ReadmeApp from './components/apps/readme';
-import Window from './components/os/window';
-import { State as OSState, Window as WindowState, File, App as AppState } from './state/os';
+import { stateFromObject as osStateFromObject } from './state/os';
 import OperatingSystem from './components/os';
 import { Campaign, Level } from 'potato-engine';
 import { parseBoard } from 'kye-parser-ascii';
 import borderKye from './border.kye';
-import { List, Map } from 'immutable';
+import { List } from 'immutable';
 
 import './entities';
 
@@ -31,21 +30,21 @@ export default class AppRoot extends Component {
       .mapKeys((_, app) => app.name)
       .toMap();
     this.store = createStore({
-      os: OSState({
-        fileExtensionAssociations: Map({ '.kye': 'kye' }),
-        windows: List([
-          WindowState({
+      os: osStateFromObject({
+        fileExtensionAssociations: { '.kye': 'kye' },
+        windows: [
+          {
             appName: 'kye',
-            file: File({ type: 'file', name: 'border.kye' }),
-          }),
-        ]),
-        desktopFiles: List([
-          File({ type: 'file', name: 'default.kye' }),
-          File({
+            file: { type: 'file', name: 'border.kye' },
+          },
+        ],
+        desktopFiles: [
+          { type: 'file', name: 'default.kye' },
+          {
             type: 'app',
             name: 'README',
-          }),
-        ]),
+          },
+        ],
       }),
     });
   }

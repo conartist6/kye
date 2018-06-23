@@ -11,7 +11,6 @@ const State = Record({
   campaign: null,
   level: null,
   diamondsLeft: null,
-  paused: false,
   victory: false,
   recordings: List(),
   showGotoDialog: false,
@@ -33,9 +32,6 @@ export default function game(state = new State(), action) {
         newState.campaign = action.campaign;
         changeLevel(newState, action);
       });
-      break;
-    case 'PAUSE_UNPAUSE':
-      state = state.set('paused', !state.paused);
       break;
     case 'PROGRESS':
       state = state.set('diamondsLeft', state.diamondsLeft - 1);

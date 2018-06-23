@@ -70,7 +70,7 @@ export default class Example extends Component {
         }),
       );
 
-      content = <GameComponent game={this._game} />;
+      content = <GameComponent game={this._game} displayOnly={displayOnly} />;
     }
 
     return (

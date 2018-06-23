@@ -8,3 +8,6 @@ export default function Dialog({ show, children, className }) {
   }
   return <div className={'dialog ' + className}>{children}</div>;
 }
+Dialog.defaultProps = {
+  show: true,
+};
