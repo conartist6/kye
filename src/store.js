@@ -1,13 +1,7 @@
-import { createStore as createStoreRedux, applyMiddleware, compose, combineReducers } from 'redux';
-import gameMiddleware from './middlewares/game';
+import { compose, applyMiddleware, createStore as createStoreRedux } from 'redux';
+import gameMiddleware from './state/middlewares/game';
 import thunk from 'redux-thunk';
-import game from './game';
-import os from './os';
-
-const rootReducer = combineReducers({
-  game,
-  os,
-});
+import rootReducer from './state';
 
 export function createStore(initialState = {}) {
   const enhancers = [];

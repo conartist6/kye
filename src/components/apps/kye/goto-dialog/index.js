@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dialog from '../../../dialog';
 import Button from '../../../button';
-import Modal from '../../../os/modal';
+import { Modal } from 'fun-web-os';
 import { connect } from 'react-redux';
 import c from 'keycode-js';
 

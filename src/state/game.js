@@ -16,7 +16,7 @@ const State = Record({
   showGotoDialog: false,
 });
 
-export default function game(state = new State(), action) {
+export default function reducer(state = new State(), action) {
   switch (action.type) {
     case 'OPEN_FILE':
       if (/\.kye$/i.test(action.name)) {
@@ -76,10 +76,6 @@ function changeLevel(state, action) {
   state.game = action.game;
   state.kyes = kyes;
   state.diamondsLeft = state.level && state.level.count(entities.Diamond);
-}
-
-export function getInputMode(state) {
-  return state.showGotoDialog ? 'dialog' : state.victory ? 'none' : 'game';
 }
 
 export function getLevel(state, action) {

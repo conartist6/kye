@@ -5,6 +5,7 @@
     "@babel/core": "7.0.0-beta.44",
     "@babel/runtime": "7.0.0-beta.44",
     "classnames": "^2.2.6",
+    "fun-web-os": "0.1.0",
     "immutable": "^3.8.2",
     "iter-tools": "^5.0.1",
     "kye-parser-ascii": "0.1.0",
@@ -18,8 +19,10 @@
     "react-dom": "^16.4.1",
     "react-draggable": "^3.0.5",
     "react-redux": "^5.0.7",
+    "react-redux-subspace": "^2.5.0",
     "react-scripts": "2.0.0-next.66cc7a90",
     "redux": "^4.0.0",
+    "redux-subspace": "^2.5.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
     "select-parent": "^1.0.1"

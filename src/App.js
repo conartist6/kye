@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from './state/store';
+import { SubspaceProvider } from 'react-redux-subspace';
+import { createStore } from './store';
+import { hydrate } from './state';
 import KyeApp from './components/apps/kye';
 import ReadmeApp from './components/apps/readme';
-import { stateFromObject as osStateFromObject } from './state/os';
-import OperatingSystem from './components/os';
+import { FunOS } from 'fun-web-os';
 import { Campaign, Level } from 'potato-engine';
 import { parseBoard } from 'kye-parser-ascii';
 import borderKye from './border.kye';
@@ -29,25 +30,28 @@ export default class AppRoot extends Component {
       .toKeyedSeq()
       .mapKeys((_, app) => app.name)
       .toMap();
-    this.store = createStore({
-      os: osStateFromObject({
-        fileExtensionAssociations: { '.kye': 'kye' },
-        windows: [
-          {
-            appName: 'kye',
-            file: { type: 'file', name: 'border.kye' },
-          },
-        ],
-        desktopFiles: [
-          { type: 'file', name: 'default.kye' },
-          {
-            type: 'app',
-            name: 'README',
-          },
-        ],
+    this.store = createStore(
+      hydrate({
+        fun: {
+          fileExtensionAssociations: { '.kye': 'kye' },
+          windows: [
+            {
+              appName: 'kye',
+              file: { type: 'file', name: 'border.kye' },
+            },
+          ],
+          desktopFiles: [
+            { type: 'file', name: 'default.kye' },
+            {
+              type: 'app',
+              name: 'README',
+            },
+          ],
+        },
       }),
-    });
+    );
   }
+
   componentDidMount() {
     this.store.dispatch({
       type: 'LOAD_CAMPAIGN',
@@ -55,10 +59,13 @@ export default class AppRoot extends Component {
       displayOnly: true,
     });
   }
+
   render() {
     return (
       <Provider store={this.store}>
-        <OperatingSystem apps={this._apps} />
+        <SubspaceProvider mapState={state => state.fun} namespace="fun">
+          <FunOS apps={this._apps} />
+        </SubspaceProvider>
       </Provider>
     );
   }
