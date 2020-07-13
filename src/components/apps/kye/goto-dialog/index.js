@@ -77,12 +77,11 @@ class GotoDialog extends Component {
 }
 
 const GotoDialogWithInput = props => (
-  <Modal show={props.showGotoDialog}>{input => <GotoDialog {...props} input={input} />}</Modal>
+  <Modal show={props.show}>{input => <GotoDialog {...props} input={input} />}</Modal>
 );
 
-function mapStateToProps(state) {
-  const { showGotoDialog } = state.game;
-
-  return { showGotoDialog };
+function mapStateToProps({ game: state }) {
+  const { showGotoDialog } = state;
+  return { show: showGotoDialog };
 }
 export default connect(mapStateToProps)(GotoDialogWithInput);

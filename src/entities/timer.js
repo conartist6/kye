@@ -2,10 +2,14 @@ import { Thinker } from 'potato-engine';
 import { Map } from 'immutable';
 
 export default class Timer extends Thinker {
+  static __name = 'Timer';
+  static attributesBySymbol = Map({ '}': 3, '|': 4, '{': 5, z: 6, y: 7, x: 8, w: 9 });
+
   constructor(...args) {
     super(...args);
     this.timelet = 5;
   }
+
   get timer() {
     return this.__attribute;
   }
@@ -29,5 +33,3 @@ export default class Timer extends Thinker {
     }
   }
 }
-Timer.attributesBySymbol = Map({ '}': 3, '|': 4, '{': 5, z: 6, y: 7, x: 8, w: 9 });
-Timer.__name = 'Timer'; // uglify killin' me

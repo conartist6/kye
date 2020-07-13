@@ -2,6 +2,9 @@ import Shooter from './shooter';
 import { Map } from 'immutable';
 
 export default class RockyShooter extends Shooter {
+  static __name = 'RockyShooter';
+  static attributesBySymbol = Map({ F: null });
+
   get content() {
     return 'F';
   }
@@ -10,5 +13,3 @@ export default class RockyShooter extends Shooter {
     return this.entities.Rocky;
   }
 }
-RockyShooter.attributesBySymbol = Map({ F: null });
-RockyShooter.__name = 'RockyShooter'; // uglify killin' me

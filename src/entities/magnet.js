@@ -2,6 +2,9 @@ import { Magnet as MagnetBase } from 'potato-engine';
 import { Map } from 'immutable';
 
 export default class Magnet extends MagnetBase {
+  static __name = 'Magnet';
+  static attributesBySymbol = Map({ S: 'HORIZONTAL', s: 'VERTICAL' });
+
   get frequency() {
     return 1;
   }
@@ -10,5 +13,3 @@ export default class Magnet extends MagnetBase {
     return this.__attribute;
   }
 }
-Magnet.attributesBySymbol = Map({ S: 'HORIZONTAL', s: 'VERTICAL' });
-Magnet.__name = 'Magnet'; // uglify killin' me

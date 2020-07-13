@@ -16,11 +16,17 @@ export class KyeGame extends Component {
   }
 
   componentDidMount() {
-    this.setupInput();
+    if (!this.props.displayOnly) {
+      this._input = this.props.input;
+      this._input.on('keydown', this.keydown);
+    }
   }
 
   componentWillUnmount() {
-    this.teardownInput();
+    if (this._input) {
+      this._input.off('keydown', this.keydown);
+      this._input = null;
+    }
   }
 
   keydown(event) {
@@ -37,22 +43,6 @@ export class KyeGame extends Component {
 
         event.preventDefault();
         break;
-    }
-  }
-
-  setupInput() {
-    if (!this.props.displayOnly) {
-      this._input = this.props.input;
-      this._input.on('keydown', this.keydown);
-      this._input.start();
-    }
-  }
-
-  teardownInput() {
-    if (this._input) {
-      this._input.off('keydown', this.keydown);
-      this._input.end();
-      this._input = null;
     }
   }
 

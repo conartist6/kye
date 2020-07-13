@@ -4,6 +4,9 @@ import { Map } from 'immutable';
 const { flip } = directions;
 
 export default class Sentry extends Thinker {
+  static __name = 'Sentry';
+  static attributesBySymbol = Map({ U: 'UP', D: 'DOWN', L: 'LEFT', R: 'RIGHT' });
+
   think(board) {
     const canMove = board.move(this, this.direction);
     if (!canMove) {
@@ -24,5 +27,3 @@ export default class Sentry extends Thinker {
     return this.__attribute;
   }
 }
-Sentry.attributesBySymbol = Map({ U: 'UP', D: 'DOWN', L: 'LEFT', R: 'RIGHT' });
-Sentry.__name = 'Sentry'; // uglify killin' me

@@ -55,9 +55,7 @@ export default function reducer(state = new State(), action) {
       });
       break;
     case 'GOTO':
-      if (!state.welcoming) {
-        state = state.set('showGotoDialog', true);
-      }
+      state = state.set('showGotoDialog', true);
       break;
     case 'CANCEL_GOTO':
       state = state.set('showGotoDialog', false);

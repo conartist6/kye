@@ -3,6 +3,12 @@ import { Seq } from 'immutable';
 import { range } from 'iter-tools';
 
 export default class Wall extends Entity {
+  static __name = 'Wall';
+  static attributesBySymbol = Seq.Set(range(10))
+    .toKeyedSeq()
+    .mapKeys(num => String(num))
+    .toMap();
+
   get isStatic() {
     return true;
   }
@@ -15,8 +21,3 @@ export default class Wall extends Entity {
     return Number(this.__attribute);
   }
 }
-Wall.attributesBySymbol = Seq.Set(range(10))
-  .toKeyedSeq()
-  .mapKeys(num => String(num))
-  .toMap();
-Wall.__name = 'Wall'; // uglify killin' me

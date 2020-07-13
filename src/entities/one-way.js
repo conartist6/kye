@@ -4,6 +4,9 @@ import { Map } from 'immutable';
 const { flip } = directions;
 
 export default class OneWay extends Field {
+  static __name = 'OneWay';
+  static attributesBySymbol = Map({ g: 'LEFT', i: 'UP', f: 'RIGHT', h: 'DOWN' });
+
   get direction() {
     return this.attribute;
   }
@@ -12,5 +15,3 @@ export default class OneWay extends Field {
     return flip(direction) === this.direction ? super.canEnter(...arguments) : false;
   }
 }
-OneWay.attributesBySymbol = Map({ g: 'LEFT', i: 'UP', f: 'RIGHT', h: 'DOWN' });
-OneWay.__name = 'OneWay'; // uglify killin' me

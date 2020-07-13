@@ -2,6 +2,9 @@ import { Thinker, directions } from 'potato-engine';
 import { Map } from 'immutable';
 
 export default class Shooter extends Thinker {
+  static __name = 'Shooter';
+  static attributesBySymbol = Map({ A: 'UP' });
+
   constructor(coords, attribute, ...args) {
     super(coords, 'UP', ...args);
     this._timer = 0;
@@ -45,5 +48,3 @@ export default class Shooter extends Thinker {
     }
   }
 }
-Shooter.attributesBySymbol = Map({ A: 'UP' });
-Shooter.__name = 'Shooter'; // uglify killin' me

@@ -4,6 +4,15 @@ import { Map } from 'immutable';
 const { randomDirection, manhattan, towards } = directions;
 
 export default class Monster extends Interactor {
+  static __name = 'Monster';
+  static attributesBySymbol = Map({
+    E: 'GNASHER',
+    T: 'TWISTER',
+    '[': 'SPIKE',
+    '~': 'SNAKE',
+    C: 'BLOB',
+  });
+
   get frequency() {
     return 3;
   }
@@ -65,11 +74,3 @@ export default class Monster extends Interactor {
     return this.attribute;
   }
 }
-Monster.attributesBySymbol = Map({
-  E: 'GNASHER',
-  T: 'TWISTER',
-  '[': 'SPIKE',
-  '~': 'SNAKE',
-  C: 'BLOB',
-});
-Monster.__name = 'Monster'; // uglify killin' me

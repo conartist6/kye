@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { SubspaceProvider } from 'react-redux-subspace';
+import { createSubspaceProvider } from 'react-redux-subspace';
 import { createStore } from './store';
 import { hydrate } from './state';
 import KyeApp from './components/apps/kye';
@@ -9,9 +9,12 @@ import { FunOS } from 'fun-web-os';
 import { Campaign, Level } from 'potato-engine';
 import { parseBoard } from 'kye-parser-ascii';
 import borderKye from './border.kye';
-import { List } from 'immutable';
+import { Map } from 'immutable';
+import { entries } from 'iter-tools';
 
 import './entities';
+
+const SubspaceProvider = createSubspaceProvider({ storeKey: 'fun' });
 
 const backgroundCampaign = new Campaign([
   new Level({
@@ -23,31 +26,25 @@ const backgroundCampaign = new Campaign([
 export default class AppRoot extends Component {
   constructor() {
     super();
-    this._apps = List([
-      { name: 'kye', component: KyeApp },
-      { name: 'README', component: ReadmeApp },
-    ])
-      .toKeyedSeq()
-      .mapKeys((_, app) => app.name)
-      .toMap();
+    // prettier-ignore
+    this._apps = Map([
+      ['kye', { component: KyeApp }],
+      ['README', { component: ReadmeApp }],
+    ]);
     this.store = createStore(
+      // prettier-ignore
       hydrate({
         fun: {
           fileExtensionAssociations: { '.kye': 'kye' },
-          windows: [
-            {
-              appName: 'kye',
-              file: { type: 'file', name: 'border.kye' },
-            },
-          ],
+          windows: [{
+            appName: 'kye',
+            file: { type: 'file', name: 'border.kye' },
+          }],
           desktopFiles: [
             { type: 'file', name: 'default.kye' },
-            {
-              type: 'app',
-              name: 'README',
-            },
-          ],
-        },
+            { type: 'app', name: 'README' },
+          ]
+        }
       }),
     );
   }

@@ -4,6 +4,8 @@ import { Thinker } from 'potato-engine';
  * A white hole is not a new entity type, it is merely a black hole which is digesting.
  **/
 export default class WhiteHole extends Thinker {
+  static __name = 'WhiteHole';
+
   constructor(coords, attribute = 4, ...args) {
     super(coords, attribute, ...args);
   }
@@ -34,4 +36,3 @@ export default class WhiteHole extends Thinker {
     return true;
   }
 }
-WhiteHole.__name = 'WhiteHole'; // uglify killin' me

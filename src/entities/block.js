@@ -2,6 +2,9 @@ import { Entity } from 'potato-engine';
 import { Map } from 'immutable';
 
 export default class Block extends Entity {
+  static __name = 'Block';
+  static attributesBySymbol = Map({ B: 'ROUND', b: 'SQUARE' });
+
   get isRound() {
     return this.__attribute;
   }
@@ -14,5 +17,3 @@ export default class Block extends Entity {
     return 1;
   }
 }
-Block.attributesBySymbol = Map({ B: 'ROUND', b: 'SQUARE' });
-Block.__name = 'Block'; // uglify killin' me

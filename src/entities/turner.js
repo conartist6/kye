@@ -4,6 +4,9 @@ import { Map } from 'immutable';
 const { rightOf, leftOf } = directions;
 
 export default class Turner extends Interactor {
+  static __name = 'Turner';
+  static attributesBySymbol = Map({ c: 'ANTICLOCKWISE', a: 'CLOCKWISE' });
+
   react(board, targetEntity, direction) {
     const { coords } = this;
     const sourceEntity = board.at(coords, direction);
@@ -21,5 +24,3 @@ export default class Turner extends Interactor {
     return this.turn === 'ANTICLOCKWISE' ? 'a' : 'c';
   }
 }
-Turner.attributesBySymbol = Map({ c: 'ANTICLOCKWISE', a: 'CLOCKWISE' });
-Turner.__name = 'Turner'; // uglify killin' me

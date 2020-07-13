@@ -13,7 +13,7 @@ export default store => {
   return next => action => {
     const state = getState();
 
-    if (action.type === 'OPEN_FILE' && action.file.type === 'file') {
+    if (action.type === 'fun/OPEN_FILE' && action.file.type === 'file') {
       const filename = action.file.name;
 
       if (path.extname(filename) === '.kye' && filename !== state.filename) {

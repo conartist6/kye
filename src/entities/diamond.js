@@ -2,6 +2,9 @@ import Edible from './edible';
 import { Map } from 'immutable';
 
 export default class Diamond extends Edible {
+  static __name = 'Diamond';
+  static attributesBySymbol = Map({ '*': null });
+
   get twinkles() {
     return true;
   }
@@ -17,5 +20,3 @@ export default class Diamond extends Edible {
     super.destroy();
   }
 }
-Diamond.attributesBySymbol = Map({ '*': null });
-Diamond.__name = 'Diamond'; // uglify killin' me
