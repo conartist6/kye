@@ -64,7 +64,7 @@ export default class README extends Component {
         <Example level={['Kl    ']} replay={slowerReplay(['rrrlllrr', 1, 'll'])} />
         <p>
           {' '}
-          Kye is also unable to pull entities, at least not without the help! More on this later.
+          Kye is also unable to pull entities, at least not without help! More on this later.
         </p>
         <p>
           There is one other kind of entity which is able to push other entities: a{' '}
